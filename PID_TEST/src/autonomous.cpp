@@ -1,14 +1,29 @@
 #include "main.h"
+#include "Variables.cpp"
 
-/**
- * Runs the user autonomous code. This function will be started in its own task
- * with the default priority and stack size whenever the robot is enabled via
- * the Field Management System or the VEX Competition Switch in the autonomous
- * mode. Alternatively, this function may be called in initialize or opcontrol
- * for non-competition testing purposes.
- *
- * If the robot is disabled or communications is lost, the autonomous task
- * will be stopped. Re-enabling the robot will restart the task, not re-start it
- * from where it left off.
- */
-void autonomous() {}
+void myPID(int target, int sensorValue)
+{
+  while (1)
+  {
+    error = target – sensorValue;//calculates the remaining units between target and current values
+    integral = integral + error;
+    if (error = 0 || error > target)
+    {
+      integral = 0;
+    }
+    if (error > 1500)
+    {
+      integral = 0;
+    }
+    derivative = error – prevError;
+    prevError = error;
+    power = (error*kP) + (integral*kI) + (derivative*kD);
+    pros::delay(15);
+  }
+}
+
+
+void autonomous()
+{
+
+}
