@@ -3,6 +3,9 @@
 
 void driveTo(int target)
 {
+  adi_analog_calibrate(leftEnc);// calibrates the left encoder
+  adi_analog_calibrate(rightEnc);// calibrates the right encoder
+
   while (power > 20)
   {
     error = target – ((adi_analog_read(leftEnc) + adi_analog_read(rightEnc)) / 2);
@@ -24,11 +27,41 @@ void driveTo(int target)
 }//end of driveTo function
 
 
-void autonomous()
+void rotate(int degrees, bool right)
 {
   adi_analog_calibrate(leftEnc);// calibrates the left encoder
   adi_analog_calibrate(rightEnc);// calibrates the right encoder
 
-  driveTo(5000);
+  const tickPerDeg = 23;
+  int tickGoal = (tickPerDeg * degrees) / 10
+  if (right)
+  {
+    lPower = 127;
+    rPower = -127;
+    while(adi_analog_read(leftEnc) < tickGoal || adi_analog_read(rightEnc) > (-1 * tickGoal))
+    {
+      if (adi_analog_read(leftEnc) > tickGoal) {lPower = 0;}
+      if(adi_analog_read(rightEnc) < -1 * tickGoal) {rPower = 0;}
+    }//end of while
+  }//end of if
+  else
+  {
+    lPower = -127;
+    rPower = 127;
+    while(adi_analog_read(leftEnc) > (-1 * tickGoal) || adi_analog_read(rightEnc) < tickGoal)
+    {
+      if (adi_analog_read(leftEnc) < (-1 * tickGoal)) {lPower = 0;}
+      if(adi_analog_read(rightEnc) > tickGoal) {rPower = 0;}
+    }//end of while
+  }//end of else
+}//end of rotate function
 
-}
+
+void autonomous()
+{
+  for(int i = 0; i < 4; i++)
+  {
+    driveTo(5000);
+    rotate(90, true);
+  }//end of for
+}//end of auton
