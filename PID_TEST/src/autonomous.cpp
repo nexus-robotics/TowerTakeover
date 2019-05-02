@@ -42,6 +42,7 @@ void rotate(int degrees, bool right)
     {
       if (adi_analog_read(leftEnc) > tickGoal) {lPower = 0;}
       if(adi_analog_read(rightEnc) < -1 * tickGoal) {rPower = 0;}
+
     }//end of while
   }//end of if
   else
