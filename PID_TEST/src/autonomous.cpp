@@ -1,10 +1,16 @@
 #include "main.h"
 #include "Variables.cpp"
 
+int inToCm(int in)
+{
+  return ceil(in * 2.54);
+}
+
 int cmToTick(int cm)
 {
-  return cm * (int(360 / ((wheelSize * 3.14) * 2.54)));
+  return ceil(cm * (int(360 / ((wheelSize * 3.14) * 2.54))));
 }
+
 void driveTo(int target)//takes a value in cm
 {
   target = cmToTick(target);
@@ -32,7 +38,6 @@ void driveTo(int target)//takes a value in cm
   power = 0;
 }//end of driveTo function
 
-
 void rotate(int degrees, bool right)
 {
   adi_analog_calibrate(leftEnc);// calibrates the left encoder
@@ -48,7 +53,6 @@ void rotate(int degrees, bool right)
     {
       if (adi_analog_read(leftEnc) > tickGoal) {lPower = 0;}
       if(adi_analog_read(rightEnc) < -1 * tickGoal) {rPower = 0;}
-
     }//end of while
   }//end of if
   else
@@ -68,7 +72,7 @@ void autonomous()
 {
   for(int i = 0; i < 4; i++)
   {
-    driveTo(5000);
+    driveTo(inToCm(48));
     rotate(90, true);
   }//end of for
 }//end of auton
