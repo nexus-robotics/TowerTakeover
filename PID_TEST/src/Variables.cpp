@@ -7,3 +7,5 @@
 
 #Define lPower = 0;
 #Define rPower = 0;
+
+#Define wheelSize = 4.25;

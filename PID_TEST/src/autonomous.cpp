@@ -1,8 +1,10 @@
 #include "main.h"
 #include "Variables.cpp"
 
-void driveTo(int target)
+void driveTo(int target)//takes a value in cm
 {
+  target = target * (int(360 / ((wheelSize * 3.14) * 2.54)));
+
   adi_analog_calibrate(leftEnc);// calibrates the left encoder
   adi_analog_calibrate(rightEnc);// calibrates the right encoder
 
@@ -32,7 +34,7 @@ void rotate(int degrees, bool right)
   adi_analog_calibrate(leftEnc);// calibrates the left encoder
   adi_analog_calibrate(rightEnc);// calibrates the right encoder
 
-  const tickPerDeg = 23;
+  const tickPerDeg = 34;
   int tickGoal = (tickPerDeg * degrees) / 10
   if (right)
   {
