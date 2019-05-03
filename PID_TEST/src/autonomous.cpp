@@ -1,9 +1,13 @@
 #include "main.h"
 #include "Variables.cpp"
 
+int cmToTick(int cm)
+{
+  return cm * (int(360 / ((wheelSize * 3.14) * 2.54)));
+}
 void driveTo(int target)//takes a value in cm
 {
-  target = target * (int(360 / ((wheelSize * 3.14) * 2.54)));
+  target = cmToTick(target);
 
   adi_analog_calibrate(leftEnc);// calibrates the left encoder
   adi_analog_calibrate(rightEnc);// calibrates the right encoder
