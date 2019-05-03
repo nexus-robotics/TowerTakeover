@@ -18,7 +18,7 @@ void driveTo(int target)//takes a value in cm
   adi_analog_calibrate(leftEnc);// calibrates the left encoder
   adi_analog_calibrate(rightEnc);// calibrates the right encoder
 
-  while (power > 20)
+  do
   {
     error = target – ((adi_analog_read(leftEnc) + adi_analog_read(rightEnc)) / 2);
     integral = integral + error;
@@ -34,7 +34,8 @@ void driveTo(int target)//takes a value in cm
     prevError = error;
     power = (error*kP) + (integral*kI) + (derivative*kD);
     pros::delay(15);
-  }//end of while
+  }//end of do
+  while(power > 20)
   power = 0;
 }//end of driveTo function
 
