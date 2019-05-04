@@ -12,4 +12,8 @@ void orient(double deg);/*orient function*/
 
 double deltaD(double target);/*Calculate the change in distance for the left and rigth encoders*/
 
+double getXPos();
+
+douible getYPos();
+
 void drive(double x, double y);/*drive to point function*/

@@ -8,3 +8,6 @@ extern double thetaPrevious;/*globla orientation at last reset*/
 
 extern double deltaL;//distance moved on left wheel
 extern double deltaR;//distance moved on right wheel
+
+extern int powerL;
+extern int powerR;

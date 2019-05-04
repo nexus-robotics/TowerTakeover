@@ -22,15 +22,19 @@ double getAngle(double dL, double dR)
   return radTodeg((dL - dR) / (sL + sR));
 }
 
-double deltaD(double target){
-  double deltaL,deltaR, currentL, currentR;
-  while(true){
+double deltaD(double target)
+{
+  double currentL, currentR;
+  while(1)
+  {
     currentL = LF.get_position();
     currentR = RF.get_position();
     deltaL = target - currentL;
-    delta
-  }
+    deltaR = target - currentR;
 
+    powerL =
+    return (deltaL - deltaR) / 2;
+  }
 }
 
 void orient(double deg)
@@ -38,6 +42,16 @@ void orient(double deg)
 
 }
 
+double getXPos()
+{
+  return 2 * sin(getAngle(deltaL, deltaR)) * ((deltaL + deltaR) /
+  (getAngle(deltaL, deltaR) - thetaPrevious) + Ss;
+}
+
+double getYPos()
+{
+
+}
 
 void drive(double x, double y)
 {
