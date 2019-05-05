@@ -1,10 +1,6 @@
 #include "main.h"
 
-double inToCm(int in);//converts inches to centimetres
-
-double cmToTick(int cm);//converts centimetres to encoder ticks
-
-double radTodeg(double theta);/*converts orientation from radians to degrees*/
+double degToRad(double deg);/*converts orientation from degrees to radians*/
 
 double getAngle(double dL, double dR);/*determines the angle  of the robot|formula:(deltaL - deltaR)/(Sl+Sr)*/
 
@@ -12,8 +8,8 @@ void orient(double deg);/*orient function*/
 
 double deltaD(double target);/*Calculate the change in distance for the left and rigth encoders*/
 
-double getXPos();
+double getXPos();//returns the current x position of the bot
 
-double getYPos();
+double getYPos();//returns the current y position of the bot
 
 void drive(double x, double y);/*drive to point function*/

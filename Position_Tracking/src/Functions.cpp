@@ -3,30 +3,20 @@
 #include "Variables.cpp"
 #include "Sensors.hpp"
 
-double inToCm(int in)
+double degToRad(double deg)
 {
-  return in * 2.54;
-}
-
-double cmToTick(int cm)
-{
-  return cm * (360 / ((wheelSize * M_PI) * 2.54));
-}
-
-double radTodeg(double theta)
-{
-  return theta * (180 / M_PI);
+  return deg * (M_PI / 180);
 }
 
 double getAngle(double dL, double dR)
 {
-  return radTodeg((dL - dR) / (sL + sR));
+  return degToRad((dL - dR) / (sL + sR));
 }
 
 double deltaD(double target)
 {
   double currentL, currentR;
-  while(1)
+  while(true)
   {
     currentL = leftEnc.get_position();
     currentR = rightEnc.get_position();
@@ -40,7 +30,7 @@ double deltaD(double target)
 
 void orient(double deg)
 {
-
+  degToRad(deg);
 }
 
 double getXPos()
