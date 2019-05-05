@@ -17,19 +17,9 @@
  */
 void autonomous()
 {
-  task positionTracking(posTracking);
+  pros::Task positionTracking(posTracking, (void*)"PROS", TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "");
+  pros::Task drive_to_point(drive, (void*, double x, double y)"PROS", TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "");
 
-}//end of auton
 
-void posTracking(void* param)
-{
-  int lEnc = 0, rEnc = 0, bEnc = 0;
 
-  deltaL = (( leftEnc.get_value() - lEnc) / 360) * (M_PI * wheelSize);
-  deltaR = ((rightEnc.get_value() - rEnc) / 360) * (M_PI * wheelSize);
-  deltaS = (( backEnc.get_value() - bEnc) / 360) + (M_PI * wheelSize);
-
-  lenc =  leftEnc.get_value();
-  rEnc = rightEnc.get_value();
-
-}//end of posTracking
+}/*end of auton*/

@@ -3,29 +3,21 @@
 #include "Variables.cpp"
 #include "Sensors.hpp"
 
+void reset()
+{
+      thetaPrevious = 0;
+      deltaL = 0;
+      deltaR = 0;
+}
+
 double degToRad(double deg)
 {
   return deg * (M_PI / 180);
 }
 
-double getAngle(double dL, double dR)
+double getOrientation(double dL, double dR)
 {
-  return degToRad((dL - dR) / (sL + sR));
-}
-
-double deltaD(double target)
-{
-  double currentL, currentR;
-  while(true)
-  {
-    currentL = leftEnc.get_position();
-    currentR = rightEnc.get_position();
-    deltaL = target - currentL;
-    deltaR = target - currentR;
-
-    powerL =
-    return (deltaL - deltaR) / 2;
-  }
+  return (dL - dR) / (sL + sR);
 }
 
 void orient(double deg)
@@ -45,7 +37,31 @@ double getYPos()
   (getAngle(deltaL, deltaR) - thetaPrevious) + Sr);
 }
 
-void drive(double x, double y)
+double getDistance(double encValue, double prevEncValue)
+{
+  return (encValue - prevEncValue) / tickPerInch;
+}
+
+void drive(void*, double x, double y)
 {
 
 }
+
+void posTracking(void*)
+{
+  int lEnc = 0, rEnc = 0, bEnc = 0;
+  while(true)
+  {
+
+    deltaL = getDistance(leftEnc.getValue(), lEnc);
+    deltaR = getDistance(rightEnc.getValue(), rEnc);
+    deltaS = getDistance(backEnc.getValue(), bEnc);
+
+    lenc =  leftEnc.get_value();
+    rEnc = rightEnc.get_value();
+
+    thetaGlobal = thetaPrevious + getOrientation(deltaL, deltaR);
+
+    pros::delay(10);
+  }/*end of while*/
+}/*end of posTracking*/
