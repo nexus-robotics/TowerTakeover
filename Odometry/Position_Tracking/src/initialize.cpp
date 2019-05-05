@@ -1,5 +1,7 @@
 #include "main.h"
 #include "Variables.cpp"
+#include "Sensors.hpp"
+#include "Motors.hpp"
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
