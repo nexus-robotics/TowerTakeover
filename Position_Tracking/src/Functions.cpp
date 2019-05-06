@@ -5,7 +5,9 @@
 
 void reset()
 {
-      thetaPrevious = 0;
+
+      thetaPrevious = thetaGlobal;
+      thetaGlobal = 0;
       deltaL = 0;
       deltaR = 0;
 }
@@ -22,7 +24,50 @@ double getOrientation(double dL, double dR)
 
 void orient(double deg)
 {
-  degToRad(deg);
+  double deg2 = 360 - deg;
+
+  if (deg < deg2)
+  {
+    if(getOrientation(deltaL, deltaR) > deg)
+    {
+      while(deg < getOrientation(deltaL, deltaR))
+      {
+        //rotate ccw
+      }//end of while
+      //stop motors
+    }//end of if
+    else if(getOrientation(deltaL, deltaR) < deg)
+    {
+      while(deg > getOrientation(deltaL, deltaR))
+      {
+        //rotate cw
+      }//end of while
+      //stop motors
+    }//end of else if
+  }//end of if
+  else if(deg > deg2)
+  {
+    if(getOrientation(deltaL, deltaR) > deg2)
+    {
+      while(deg < getOrientation(deltaL, deltaR))
+      {
+        //rotate cw
+      }//end of while
+      //stop motors
+    }//end of if
+    else if(getOrientation(deltaL, deltaR) < deg2)
+    {
+      while(deg > getOrientation(deltaL, deltaR))
+      {
+        //rotate ccw
+      }//end of while
+      //stop motors
+    }//end of else if
+  }//end of else if
+  else
+  {
+      return;
+  }//end of else
 }
 
 double getXPos()
@@ -60,7 +105,12 @@ void posTracking(void*)
     lenc =  leftEnc.get_value();
     rEnc = rightEnc.get_value();
 
-    thetaGlobal = thetaPrevious + getOrientation(deltaL, deltaR);
+    deltaTheta = thetaPrevious + getOrientation(deltaL, deltaR);
+
+    if (deltaTheta == 0)
+    {
+      //localPosOffset vector = eqn 6 (getXPos,getYPos)
+    }//end of if
 
     pros::delay(10);
   }/*end of while*/
