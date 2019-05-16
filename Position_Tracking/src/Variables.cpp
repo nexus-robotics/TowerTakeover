@@ -12,7 +12,7 @@ extern const double tickPerInch = 360 / (wheelSize * M_PI);
 
 extern double prevGlobalPos[2] = 0;/*previous global position vector of the robot*/
 extern double localPosOffset = 0;
-extern double   thetaGlobal = 0;/*previous global orientation of the robot*/
+extern double thetaGlobal = 0;/*previous global orientation of the robot*/
 extern double deltaTheta = 0;
 extern double thetaPrevious = 0;/*global orientation at last reset*/
 
