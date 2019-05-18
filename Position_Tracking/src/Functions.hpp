@@ -18,4 +18,6 @@ double getDistance(double encValue, double prevEncValue);/*returns the distance 
 
 void drive(void*, double x, double y);/*drive to point function*/
 
+void arcDrive(void*, double x, double y);/*drive to point with an arc*/
+
 void posTracking(void*);/*position tracking function*/
