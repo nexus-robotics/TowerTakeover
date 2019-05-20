@@ -87,9 +87,14 @@ double getDistance(double encValue, double prevEncValue)
   return (encValue - prevEncValue) / tickPerInch;
 }
 
-void drive(void*, double x, double y)
+void driveTo(void*, double x, double y)
 {
+      
+}
 
+void drive_arc(void*, double x, double y)
+{
+     
 }
 
 void posTracking(void*)

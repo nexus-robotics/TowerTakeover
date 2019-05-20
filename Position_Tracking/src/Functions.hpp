@@ -16,6 +16,8 @@ double getYPos();/*returns the current y position of the bot*/
 
 double getDistance(double encValue, double prevEncValue);/*returns the distance traveled since last cycle*/
 
-void drive(void*, double x, double y);/*drive to point function*/
+void driveTo(void*, double x, double y);/*drive to point function*/
+
+void drive_arc(void*, double x, double y);/*drive to point with an arc*/
 
 void posTracking(void*);/*position tracking function*/
