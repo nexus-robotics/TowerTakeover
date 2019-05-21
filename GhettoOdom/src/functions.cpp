@@ -236,7 +236,9 @@ void odomTurn_rad(double target){
 }
 
 void drive(void*){
+
   while(true){
+
     if(master.get_digital(DIGITAL_X)){odomTurn_rad(-1);}
     if(master.get_digital(DIGITAL_B)){
       driveToPoint(-10, 0);
@@ -259,4 +261,6 @@ void drive(void*){
     RB.move(master.get_analog(ANALOG_LEFT_Y) - master.get_analog(ANALOG_RIGHT_X));
     pros::delay(20);
   }
+
+
 }
