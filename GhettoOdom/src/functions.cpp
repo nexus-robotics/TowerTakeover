@@ -81,6 +81,7 @@ void driveToPoint(double x, double y){
   odomTurn_rad(desiredTheta);
   odomTurn_rad(desiredTheta);
   odomTurn_rad(desiredTheta);
+  //Why are we doing this 3 times? -Greg
   pidDrive(x);
 
 
@@ -253,6 +254,7 @@ void drive(void*){
       driveToPoint(57.73, -25.18);
       pros::delay(100);
       driveToPoint(57.73, -25.18);
+      //Also, why are we doing this 3 time? -Greg
     }
 
     LF.move(master.get_analog(ANALOG_LEFT_Y) + master.get_analog(ANALOG_RIGHT_X));
