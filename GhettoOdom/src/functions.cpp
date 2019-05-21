@@ -227,10 +227,12 @@ void odomTurn_rad(double target){
     pros::delay(20);
 
   }while(!(error <= 0.1 && error >=-0.1));
+
   LB.move_velocity(0);
   RB.move_velocity(0);
   LF.move_velocity(0);
   RF.move_velocity(0);
+
 }
 
 void drive(void*){
