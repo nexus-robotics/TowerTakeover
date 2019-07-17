@@ -31,9 +31,9 @@ void pidDrive(double target){
     X = cos(thetaRad)*((DTL+DTR)/2);
     Y = sin(thetaRad)*((DTL+DTR)/2);
 
-    error = X - target;
     totalError += error;
     lastError = error;
+    error = X - target;
 
     P = error*kP;
     I = kI*totalError;
