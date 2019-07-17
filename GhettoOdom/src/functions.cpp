@@ -154,9 +154,9 @@ void goodTurn(double target){
 
     thetaDeg = thetaRad*(180/M_PI);
 
-    error = thetaDeg - target;
     totalError += error;
     lastError = error;
+    error = thetaDeg - target;
 
     P = error*kP;
     I = kI*totalError;
@@ -208,9 +208,10 @@ void odomTurn_rad(double target){
 
     thetaDeg = thetaRad*(180/M_PI);
 
-    error = thetaRad - target;
     totalError += error;
     lastError = error;
+    error = thetaRad - target;
+
 
     P = error*kP;
     I = kI*totalError;
